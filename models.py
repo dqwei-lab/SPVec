@@ -51,7 +51,7 @@ def cross_validation(x,y):
     for name, clf in zip(names, classifiers): 
         x_train, x_test, y_train, y_test =  train_test_split(x,y, test_size=.2, random_state=99)
         clf = clf.fit(x_train,y_train)
-        pre_y_list.append(clf.predict(x_test))  #将训练中得到的预测y存入到列表
+        pre_y_list.append(clf.predict(x_test))  
         pre_y_proba = clf.predict_proba(x_test)
         fpr_, tpr_, _ = roc_curve(y_test, pre_y_proba,pos_label=1)
         auc_ = auc(fpr_, tpr_)
@@ -60,14 +60,14 @@ def cross_validation(x,y):
         auc_list.append(auc_)
 
     #模型效果指标评估
-    n_samples,n_features=x.shape      #总样本量，总特征数
-    model_metrics_list=[]                    #回归评估指标列表
-    for i in range(5):                       #循环每个模型索引    
-        tmp_list=[]                          #每个内循环的临时结果列表    
-        for m in model_metrics_name:         #循环每个指标对象        
-            tmp_score=m(y_test,pre_y_list[i])     #计算每个回归指标结果        
-            tmp_list.append(tmp_score)       #将结果存入每个内循环的临时结果列表    
-            model_metrics_list.append(tmp_list)  #将结果存入到回归评估指标列表
-            #cv_score_df=pd.DataFrame(cv_score_list,index=names)   #建立交叉验证的数据框
-            model_metrics_df=pd.DataFrame(model_metrics_list,index=names,columns=['acc','pre','rec','f1'])  #建立回归指标的数据框
+    n_samples,n_features=x.shape      
+    model_metrics_list=[]                    
+    for i in range(5):                      
+        tmp_list=[]                              
+        for m in model_metrics_name:                 
+            tmp_score=m(y_test,pre_y_list[i])             
+            tmp_list.append(tmp_score)           
+            model_metrics_list.append(tmp_list)  
+            #cv_score_df=pd.DataFrame(cv_score_list,index=names)   
+            model_metrics_df=pd.DataFrame(model_metrics_list,index=names,columns=['acc','pre','rec','f1'])  
     return fpr_list,tpr_list,auc_list,model_metrics_df
