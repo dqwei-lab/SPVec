@@ -1,3 +1,9 @@
+"""
+#filename:feature reprensentation.py
+# - * - coding:UTF - 8 -* -
+#! /usr/bin/python
+__author__ = "Yu-Fang Zhang" 
+"""
 import pandas as pd
 import numpy as np
 import gensim 
