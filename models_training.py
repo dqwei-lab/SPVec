@@ -1,5 +1,5 @@
 """
-#filename:model_training.py
+#filename:models_training.py
 # - * - coding:UTF - 8 -* -
 #! /usr/bin/python
 __author__ = "Yu-Fang Zhang" 
