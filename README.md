@@ -8,7 +8,8 @@ Drug discovery is an academical and commercial process of global importance. Acc
 This method developed with Python 3.7, please make sure all the dependencies are installed, which is specified in `requirements.txt`.
 
 '''from SPVec import SMILES2Vec
-from SPVec import ProtVec'''
+from SPVec import ProtVec
+'''
 First line imports functions to generate continuous feature vectors from small molecular drugs, and second line imports functions to generate continuous feature vectors from protein targets.
 
 # Codes and datasets
